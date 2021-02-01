@@ -14,6 +14,8 @@ void main() {
 // }
 
 class MyApp extends StatelessWidget {
+  void answerQuestion() => print('Answered question');
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,7 +23,23 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('My first app'),
         ),
-        body: Text('This is body text'),
+        body: Column(
+          children: [
+            Text('The question!'),
+            RaisedButton(
+              onPressed: answerQuestion,
+              child: Text('Answer 1'),
+            ),
+            RaisedButton(
+              onPressed: answerQuestion,
+              child: Text('Answer 2'),
+            ),
+            RaisedButton(
+              onPressed: answerQuestion,
+              child: Text('Answer 3'),
+            ),
+          ],
+        ),
       ),
     );
   }
