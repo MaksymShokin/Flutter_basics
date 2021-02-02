@@ -13,22 +13,43 @@ void main() {
 //   }
 // }
 
-class MyApp extends StatelessWidget {
-  void answerQuestion() => print('Answered question');
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyAppState();
+  }
+}
+
+
+class MyAppState extends State<MyApp> {
+  var questionIndex = 0;
+
+  void answerQuestion() => {
+    setState(()=> {
+      questionIndex = questionIndex + 1
+    }),
+    print('Answered question')
+  };
 
   @override
   Widget build(BuildContext context) {
+    var questions = [
+      'long_dark',
+      'souls'
+    ];
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('My first app'),
+          title: Text(questions[questionIndex]),
         ),
         body: Column(
           children: [
             Text('The question!'),
             RaisedButton(
               onPressed: answerQuestion,
-              child: Text('Answer 1'),
+              child: Text(questions[questionIndex]),
             ),
             RaisedButton(
               onPressed: answerQuestion,
